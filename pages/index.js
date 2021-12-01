@@ -1,8 +1,45 @@
+import { useEffect, useState } from 'react';
+// This function detects most providers injected at window.ethereum
+import detectEthereumProvider from '@metamask/detect-provider';
+
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import { handleAccountsChanged, 
+          handleChainChanged,
+          connectWallet,
+          connectProvider,
+          requestAccount
+        } from "./lib/eth";
+import Library from "./components/Library";
+import Login from "./components/Login";
+import { Wallet } from '@ethersproject/wallet';
 
 export default function Home() {
+
+  const [ wallet, setWallet ] = useState(null);
+  const [ provider, setProvider ] = useState(null);
+  const [ signer, setSigner ] = useState(null);
+
+  useEffect(async () => {
+
+    if (!await detectEthereumProvider()) return false;
+
+    // Metamask Handlers
+    window.ethereum.on('accountsChanged', (accounts) => handleAccountsChanged(accounts, setWallet));
+    window.ethereum.on('chainChanged', handleChainChanged);
+
+    if (!await connectWallet(wallet, setWallet)) return false;
+    if (!await connectProvider(provider, setProvider, signer, setSigner)) return false;
+    
+  }, [provider, wallet]);
+
+  const handleLogin = (e) => {
+    let account = requestAccount(setWallet);
+    if (!account) return false;
+    return true;
+  }
+  
   return (
     <div className={styles.container}>
       <Head>
@@ -13,43 +50,23 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
+          Podcasts
         </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h2>Documentation &rarr;</h2>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h2>Learn &rarr;</h2>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h2>Examples &rarr;</h2>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h2>Deploy &rarr;</h2>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
+        {
+          wallet && wallet != 0 ?
+            (<Library wallet={wallet} provider={provider} signer={signer} />)
+            :
+            (
+              <div className={styles.library}>
+                  <h1 className={styles.library_title}>
+                      Log in to access your library
+                  </h1>
+                  <button onClick={() => handleLogin()}> Log In</button>
+              </div>
+            )
+        }
+       
       </main>
 
       <footer className={styles.footer}>
