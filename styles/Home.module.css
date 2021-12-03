@@ -101,14 +101,13 @@
 
 .card {
   margin: 1rem;
-  padding: 1.5rem;
   text-align: left;
   color: inherit;
   text-decoration: none;
   border: 1px solid #eaeadf;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  max-width: 300px;
+  width: 300px;
 }
 
 .card:hover,
@@ -129,6 +128,20 @@
   margin: 0;
   font-size: 1.25rem;
   line-height: 1.5;
+}
+
+.card_image {
+  object-fit: contain;
+  position: block;
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  overflow: hidden;
+}
+
+.card_body {
+  padding: 1.5rem;
 }
 
 .logo {

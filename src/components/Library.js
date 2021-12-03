@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import styles from '@Styles/Home.module.css';
 import { getAllNfts } from '@Helpers/eth';
-import LibraryCard from './LibraryCard'
+import LibraryCard from './CommunityCard'
 
 const Library = ({wallet, provider, signer}) => {
 
