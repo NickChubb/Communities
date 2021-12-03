@@ -1,12 +1,16 @@
 import React from 'react'
+import { useForm } from "react-hook-form";
+import styles from '@Styles/Home.module.css'
 
 /**
  * Channel which 
  * @returns 
  */
 const CreateChannel = () => {
+
+    const { register, handleSubmit } = useForm();
     
-    const handleSubmit = async (evt) => {
+    const onSubmit = async (evt) => {
         evt.preventDeafult();
 
         const res = await fetch('/api/channel', {
@@ -23,13 +27,23 @@ const CreateChannel = () => {
     }   
     
     return (
-        <div>
-            <form onSubmit={handleSubmit}> 
-                <label htmlFor="name">Name</label>
-                <input id="name" type="text" autoComplete="name" required />
-                <button type="submit">Register</button>
+        <>
+            <h1 className={styles.content_title}>
+                Create a Community
+            </h1>
+
+            <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+                <input {...register("communityName")} placeholder="Community name" />
+                <input {...register("communitySize")} placeholder="Community size" />
+                
+                <select {...register("category")}>
+                    <option value="">Select...</option>
+                    <option value="A">Category A</option>
+                    <option value="B">Category B</option>
+                </select>
+                <input type="submit" />
             </form>
-        </div>
+        </>
     )
 }
 

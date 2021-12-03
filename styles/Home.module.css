@@ -25,6 +25,19 @@
   text-align: center;
 }
 
+.nav_bar {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 60px;
+}
+
+.nav_bar li {
+  display: inline;
+  margin: 10px;
+
+}
+
 .footer {
   display: flex;
   flex: 1;
@@ -56,7 +69,6 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
-  margin-bottom: 60px;
 }
 
 .title,
@@ -109,6 +121,8 @@
 .card h2 {
   margin: 0 0 1rem 0;
   font-size: 1.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .card p {
@@ -127,4 +141,19 @@
     width: 100%;
     flex-direction: column;
   }
+}
+
+.form {
+  flex-direction: column;
+  display: flex;
+}
+
+.form * {
+  margin: 5px;
+  border-radius: 4px;
+  height: 32px;
+  border: none;
+  position: relative;
+  background-color: #eaeae2;
+  transition: 0.3s all;
 }

@@ -20,7 +20,7 @@ const Library = ({wallet, provider, signer}) => {
     <div >
 
       <h1 className={styles.content_title}>
-        My Library
+        My Communities
       </h1>
 
       <div className={styles.grid}>

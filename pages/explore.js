@@ -5,7 +5,9 @@ import Layout from '@Components/Layout'
 const explore = () => {
     return (
         <Layout>
-            
+            <h1>
+                Explore Communities
+            </h1>
         </Layout>
     )
 }
