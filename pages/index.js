@@ -1,38 +1,18 @@
-import { useEffect, useState } from 'react';
-// This function detects most providers injected at window.ethereum
-import detectEthereumProvider from '@metamask/detect-provider';
-
 import Layout from '@Components/Layout';
 import styles from '@Styles/Home.module.css'
-import { handleAccountsChanged, 
-          handleChainChanged,
-          connectWallet,
-          connectProvider,
-          requestAccount
-        } from "@Helpers/eth";
-import Library from "@Components/Library";
+import { requestAccount } from "@Helpers/eth";
+import Library from "@Components/library/Library";
+import useEth from '@Hooks/useEth';
 
 export default function Home() {
 
-  const [ wallet, setWallet ] = useState(null);
-  const [ provider, setProvider ] = useState(null);
-  const [ signer, setSigner ] = useState(null);
+  const { wallet, setWallet,
+          provider, setProvider,
+          signer, setSigner,
+          handleAccountsChanged } = useEth();
 
-  useEffect(async () => {
-
-    if (!await detectEthereumProvider()) return false;
-
-    // Metamask Handlers
-    window.ethereum.on('accountsChanged', (accounts) => handleAccountsChanged(accounts, setWallet));
-    window.ethereum.on('chainChanged', handleChainChanged);
-
-    if (!await connectWallet(wallet, setWallet)) return false;
-    if (!await connectProvider(provider, setProvider, signer, setSigner)) return false;
-    
-  }, [provider, wallet]);
-
-  const handleLogin = (e) => {
-    let account = requestAccount(setWallet);
+  const handleLogin = async (e) => {
+    let account = await requestAccount(handleAccountsChanged);
     if (!account) return false;
     return true;
   }
@@ -41,7 +21,7 @@ export default function Home() {
     <Layout>
 
         {
-          wallet && wallet != 0 ?
+          wallet && wallet != 0 && provider ?
             (<Library wallet={wallet} provider={provider} signer={signer} />)
             :
             (

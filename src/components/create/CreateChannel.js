@@ -3,13 +3,12 @@ import { useForm } from "react-hook-form";
 import styles from '@Styles/Home.module.css'
 import { createCommunity } from '@Helpers/community';
 import useEth from '@Hooks/useEth';
-import Layout from '@Components/Layout'
 
 /**
  * Channel which 
  * @returns 
  */
-const create = () => {
+const CreateChannel = () => {
 
     const { signer } = useEth();
     const { register, watch, getValues, handleSubmit } = useForm();
@@ -74,7 +73,7 @@ const create = () => {
     }   
     
     return (
-        <Layout>
+        <>
             <h1 className={styles.content_title}>
                 Create a Community
             </h1>
@@ -146,8 +145,8 @@ const create = () => {
 
                 <input type="submit" />
             </form>
-        </Layout>
+        </>
     )
 }
 
-export default create
+export default CreateChannel    

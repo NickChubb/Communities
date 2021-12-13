@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import styles from '@Styles/Home.module.css';
 import { getAllNfts } from '@Helpers/eth';
-import LibraryCard from './CommunityCard'
+import LibraryCard from '@Components/library/LibraryCard';
 
 const Library = ({wallet, provider, signer}) => {
 
@@ -11,7 +11,7 @@ const Library = ({wallet, provider, signer}) => {
 
   useEffect(async() => {
     
-    setNFTs(await getAllNfts(wallet));
+    setNFTs(await getAllNfts(wallet, provider));
     setLoading(false);
 
   }, [])
@@ -26,13 +26,18 @@ const Library = ({wallet, provider, signer}) => {
       <div className={styles.grid}>
 
         {
-          NFTs && NFTs.length > 0 ?
-            NFTs.map((nft) => {
-              return <LibraryCard nft={nft} />
-            })
+          loading?
+            <p>Loading...</p>
             :
-            <p>No NFTs in Library</p>
+            NFTs && NFTs.length > 0 ?
+              NFTs.map((nft, key) => {
+                console.log(nft)
+                return <LibraryCard key={key} community={nft} />
+              })
+              :
+              <p>No NFTs in Library</p>   
         }
+
       </div>
     </div>
   )

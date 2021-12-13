@@ -2,11 +2,12 @@ import React from 'react'
 
 import styles from '@Styles/Home.module.css'
 
+//! NOT YET USED
 const Login = () => {
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         // e.preventDefault();
-        let account = requestAccount();
+        let account = await requestAccount();
         if (!account) return false;
         return true;
       }
