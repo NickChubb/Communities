@@ -5,8 +5,13 @@ import NavBar from './NavBar'
 import Image from 'next/image'
 import styles from '@Styles/Home.module.css'
 import AccountButton from './AccountButton'
+import useEth from '@Hooks/useEth'
+import Login from './login/Login'
 
 const Layout = (props) => {
+
+    const { wallet } = useEth();
+
     return (
         <div className={styles.container}>
             <Head>
@@ -26,9 +31,14 @@ const Layout = (props) => {
                     <NavBar />
                 </div>
 
-                <div className={styles.content} >
-                    {props.children}
-                </div>
+                {
+                    !wallet ?
+                        <Login />
+                        :
+                        <div className={styles.content} >
+                            {props.children}
+                        </div>
+                }
 
 
             </main>

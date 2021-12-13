@@ -13,6 +13,7 @@ const useEth = () => {
     const [ wallet, setWallet ] = useState(null);
     const [ provider, setProvider ] = useState(null);
     const [ signer, setSigner ] = useState(null);
+    const [ loading, setLoading ] = useState(true);
 
     useEffect(async () => {
 
@@ -24,6 +25,8 @@ const useEth = () => {
 
         if (!await connectWallet()) return false;
         if (!await connectProvider()) return false;
+
+        setLoading(false);
         
     }, [provider, wallet]);
 
@@ -85,11 +88,11 @@ const useEth = () => {
         return true;
     }
 
-    // Return 
     return {
         wallet, setWallet,
         provider, setProvider,
         signer, setSigner,
+        loading,
         handleAccountsChanged,
         handleChainChanged
     }
