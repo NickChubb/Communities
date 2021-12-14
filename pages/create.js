@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { useForm } from "react-hook-form";
-import styles from '@Styles/Home.module.css'
-import { createCommunity } from '@Helpers/community';
+import React from 'react';
 import useEth from '@Hooks/useEth';
-import Layout from '@Components/Layout'
-
+import { useForm } from 'react-hook-form';
+import Layout from '@Components/Layout';
+import styles from '@Styles/Home.module.css';
 /**
- * Channel which 
  * @returns 
  */
-const create = () => {
+const Create = () => {
 
     const { signer, setPending } = useEth();
     const { register, watch, getValues, handleSubmit } = useForm();
@@ -71,8 +68,8 @@ const create = () => {
             image: data.communityImage[0].name,
             visibility: data.visibility
         }));
-    }   
-    
+    }  
+
     return (
         <Layout>
             <h1 className={styles.content_title}>
@@ -150,4 +147,4 @@ const create = () => {
     )
 }
 
-export default create
+export default Create

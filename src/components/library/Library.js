@@ -36,7 +36,7 @@ const Library = ({wallet, provider, signer}) => {
               })
               :
               <div>
-                <p>You're not currently part of any Communities. <span>😔</span></p>
+                <p>You are not currently part of any Communities. <span>😔</span></p>
                 <p>Check out the <a href={`/explore`}>explore</a> page to find new communities!</p>   
               </div>
         }

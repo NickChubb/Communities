@@ -1,18 +1,24 @@
-import React from 'react'
-
-import styles from '@Styles/Home.module.css'
+import React from 'react';
+import Link from 'next/link';
+import styles from '@Styles/Home.module.css';
 
 const NavBar = () => {
     return (
         <ul className={styles.nav_bar}>
            <li>
-               <a href="/" >My Communities</a>
+               <Link href="/">
+                    <a>My Communities</a>
+               </Link>
             </li>
            <li>
-               <a href="/create">Create</a>
+               <Link href="/create">
+                    <a>Create</a>
+               </Link>
             </li> 
            <li>
-                <a href="/explore">Find a Community</a>
+               <Link href="/explore">
+                    <a>Find a Community</a>
+                </Link>
             </li>
         </ul>
     )

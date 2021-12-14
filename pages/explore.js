@@ -7,7 +7,7 @@ import useEth from '@Hooks/useEth'
 import { getAllCommunities, getAllCommunitiesAddr, getAllCommunityObjects } from '@Helpers/community'
 import Loading from '@Components/Loading'
 
-const explore = () => {
+const Explore = () => {
 
     const { provider } = useEth();
     const [ communities, setCommunities ] = useState([]);
@@ -42,4 +42,4 @@ const explore = () => {
     )
 }
 
-export default explore
+export default Explore
