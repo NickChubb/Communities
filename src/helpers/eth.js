@@ -28,7 +28,7 @@ export const requestAccount = async (handleAccountsChanged) => {
  * @param {*} wallet 
  * @returns 
  */
-export const getAllNfts = async (wallet, provider) => {
+export const getAllUserCommunities = async (wallet, provider) => {
 
     let url = `https://api-ropsten.etherscan.io/api?${new URLSearchParams({
         module: 'account',
@@ -54,6 +54,6 @@ export const getAllNfts = async (wallet, provider) => {
     ]);
     
     //? Do we want to instead map the community address to lower in getAllCommunityAddrs? 
-    return nfts.result.filter((nft) => communities.map(address => address.toLowerCase()).includes(nft.contractAddress));
+    return nfts.result.filter((nft) => communities.includes(nft.contractAddress));
 
 }

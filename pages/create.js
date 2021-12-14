@@ -11,7 +11,7 @@ import Layout from '@Components/Layout'
  */
 const create = () => {
 
-    const { signer } = useEth();
+    const { signer, setPending } = useEth();
     const { register, watch, getValues, handleSubmit } = useForm();
 
     // Watch for the communitySize field to be changed and display
@@ -63,7 +63,7 @@ const create = () => {
     const onSubmit = async (evt) => {
 
         const data = watch();
-        console.log(await createCommunity(signer, {
+        console.log(await createCommunity(signer, setPending, {
             name: data.communityName,
             symbol: data.communitySymbol,
             description: data.communityDescription,

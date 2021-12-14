@@ -19,11 +19,12 @@ const Login = () => {
 
 
     return (
-        <div className={styles.library}>
-            <h1 className={styles.library_title}>
+        <div className={styles.content}>
+            <h1 className={styles.content_title}>
                 You must be logged in to continue.
+                <br />
+                <button className={styles.button} onClick={() => handleLogin()}> Log In</button>
             </h1>
-            <button onClick={() => handleLogin()}> Log In</button>
         </div>
     )
 }

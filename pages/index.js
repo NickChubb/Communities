@@ -1,6 +1,4 @@
 import Layout from '@Components/Layout';
-import styles from '@Styles/Home.module.css'
-import { requestAccount } from "@Helpers/eth";
 import Library from "@Components/library/Library";
 import useEth from '@Hooks/useEth';
 

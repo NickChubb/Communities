@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 import styles from '@Styles/Home.module.css';
-import { getAllNfts } from '@Helpers/eth';
+import { getAllUserCommunities } from '@Helpers/eth';
 import LibraryCard from '@Components/library/LibraryCard';
 
 const Library = ({wallet, provider, signer}) => {
@@ -11,7 +11,7 @@ const Library = ({wallet, provider, signer}) => {
 
   useEffect(async() => {
     
-    setNFTs(await getAllNfts(wallet, provider));
+    setNFTs(await getAllUserCommunities(wallet, provider));
     setLoading(false);
 
   }, [])
@@ -35,7 +35,10 @@ const Library = ({wallet, provider, signer}) => {
                 return <LibraryCard key={key} community={nft} />
               })
               :
-              <p>No NFTs in Library</p>   
+              <div>
+                <p>You're not currently part of any Communities. <span>😔</span></p>
+                <p>Check out the <a href={`/explore`}>explore</a> page to find new communities!</p>   
+              </div>
         }
 
       </div>

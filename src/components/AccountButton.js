@@ -3,11 +3,19 @@ import styles from '@Styles/Home.module.css'
 
 const AccountButton = () => {
     
-    const { wallet } = useEth();
+    const { wallet, pending } = useEth();
 
     return (
         <a href={`/u/${wallet}`} className={styles.account_button}>
             {wallet || "Log in"}
+            <br />
+            {
+                pending?
+                    <p>Pending transaction.</p>
+                    :
+                    <></>
+            }
+            
         </a>
     )
 }

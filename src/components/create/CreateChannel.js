@@ -10,7 +10,7 @@ import useEth from '@Hooks/useEth';
  */
 const CreateChannel = () => {
 
-    const { signer } = useEth();
+    const { signer, setPending } = useEth();
     const { register, watch, getValues, handleSubmit } = useForm();
 
     // Watch for the communitySize field to be changed and display
@@ -69,7 +69,7 @@ const CreateChannel = () => {
             size: data.communitySize,
             image: data.communityImage[0].name,
             visibility: data.visibility
-        }));
+        }, setPending));
     }   
     
     return (

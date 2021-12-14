@@ -10,10 +10,14 @@ const address = process.env.CH_CONTRACT_ADDRESS;
  * @param {Object} data { string name, string symbol, string description, 
                         uint size, string image, bool visibility }
  */
-export const createCommunity = async (signer, data) => {
+export const createCommunity = async (signer, setPending, data) => {
     
     const communityHub = new ethers.Contract(address, communityHubAbi, signer);
-    return (await communityHub.createCommunity(data.name, data.symbol, data.description, data.size, data.image, true));
+    const transaction = await communityHub.createCommunity(data.name, data.symbol, data.description, data.size, data.image, true);
+    setPending(true);
+    const receipt = await transaction.wait();
+    setPending(false);
+    return receipt;
 }
 
 /**
@@ -79,7 +83,7 @@ export const getAllCommunityAddrs = async (provider) => {
 
     const communityHub = new ethers.Contract(address, communityHubAbi, provider);
     const communities = await communityHub.getCommunities();
-    return communities;
+    return communities.map(address => address.toLowerCase());
 }
 
 /**

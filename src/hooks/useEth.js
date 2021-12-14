@@ -14,6 +14,7 @@ const useEth = () => {
     const [ provider, setProvider ] = useState(null);
     const [ signer, setSigner ] = useState(null);
     const [ loading, setLoading ] = useState(true);
+    const [ pending, setPending ] = useState(false);
 
     useEffect(async () => {
 
@@ -22,6 +23,7 @@ const useEth = () => {
         // Metamask Handlers
         window.ethereum.on('accountsChanged', (accounts) => handleAccountsChanged(accounts));
         window.ethereum.on('chainChanged', handleChainChanged);
+        window.ethereum.on('pending', handlePending)
 
         if (!await connectWallet()) return false;
         if (!await connectProvider()) return false;
@@ -53,6 +55,14 @@ const useEth = () => {
     */
     const handleChainChanged = (chain) => {
         // todo
+    }
+
+    /**
+     * 
+     * @param {*} tx 
+     */
+    const handlePending = (tx) => {
+        console.log(tx);
     }
 
     /**
@@ -92,6 +102,7 @@ const useEth = () => {
         wallet, setWallet,
         provider, setProvider,
         signer, setSigner,
+        pending, setPending,
         loading,
         handleAccountsChanged,
         handleChainChanged
