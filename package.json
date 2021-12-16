@@ -8,9 +8,17 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ethersproject/abi": "^5.5.0",
+    "@ethersproject/bignumber": "^5.5.0",
+    "@ethersproject/bytes": "^5.5.0",
+    "@ethersproject/contracts": "^5.5.0",
+    "@ethersproject/providers": "^5.5.1",
     "@metamask/detect-provider": "^1.2.0",
+    "@usedapp/core": "^0.7.1",
     "ethers": "^5.5.1",
+    "events": "^3.3.0",
     "fs": "^0.0.1-security",
+    "ipfs-core": "^0.12.2",
     "next": "12.0.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",

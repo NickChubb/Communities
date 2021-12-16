@@ -1,16 +1,21 @@
+import React, { useContext } from 'react';
 import Link from 'next/link';
 import useEth from '@Hooks/useEth';
 import styles from '@Styles/Home.module.css'
+import { useEthers } from "@usedapp/core";
+import { TransactionPendingContext } from '@Helpers/context';
 
-const AccountButton = () => {
+const AccountModal = () => {
     
-    const { wallet, pending } = useEth();
+    const { account } = useEthers();
+    const [ pending ] = useContext(TransactionPendingContext);
 
     return (
-        <Link href={`/u/${wallet}`} >
+        <Link href={`/u/${account}`} >
             <a className={styles.account_button}>
-                {wallet || "Log in"}
+                {account || "Log in"}
                 <br />
+                {console.log(pending)}
                 {
                     pending?
                         <p>Pending transaction.</p>
@@ -23,4 +28,4 @@ const AccountButton = () => {
     )
 }
 
-export default AccountButton;
+export default AccountModal;

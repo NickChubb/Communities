@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useEthers, useContractFunction } from '@usedapp/core';
+
 import useEth from '@Hooks/useEth';
 import { useForm } from 'react-hook-form';
 import Layout from '@Components/Layout';
 import styles from '@Styles/Home.module.css';
+import { createCommunity } from '@Helpers/community';
+import { TransactionPendingContext } from '@Helpers/context';
+
 /**
  * @returns 
  */
 const Create = () => {
 
-    const { signer, setPending } = useEth();
+    const { signer } = useEth();
+    const { library } = useEthers();   
+    const [ pending, updatePending ] = useContext(TransactionPendingContext); 
     const { register, watch, getValues, handleSubmit } = useForm();
 
     // Watch for the communitySize field to be changed and display
@@ -60,14 +67,19 @@ const Create = () => {
     const onSubmit = async (evt) => {
 
         const data = watch();
-        console.log(await createCommunity(signer, setPending, {
+        let transaction = await createCommunity(signer, {
             name: data.communityName,
             symbol: data.communitySymbol,
             description: data.communityDescription,
             size: data.communitySize,
             image: data.communityImage[0].name,
             visibility: data.visibility
-        }));
+        });
+        updatePending(true);
+        transaction.wait().then((receipt) => {
+            console.log(receipt);
+            updatePending(false);
+        });
     }  
 
     return (

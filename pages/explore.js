@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useEthers } from '@usedapp/core';
 
 import Layout from '@Components/Layout'
 import CommunityCard from '@Components/explore/CommunityCard'
@@ -9,17 +10,17 @@ import Loading from '@Components/Loading'
 
 const Explore = () => {
 
-    const { provider } = useEth();
+    const { library } = useEthers();
     const [ communities, setCommunities ] = useState([]);
     const [ loading, setLoading ] = useState(true);
 
     useEffect( async () => {
 
-        if (!provider) return;
-        setCommunities(await getAllCommunityObjects(provider));
+        if (!library) return;
+        setCommunities(await getAllCommunityObjects(library));
         setLoading(false);
 
-    }, [provider]);
+    }, [library]);
 
     return (
         <Layout>

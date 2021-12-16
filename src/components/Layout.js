@@ -4,7 +4,7 @@ import Head from 'next/head'
 import NavBar from './NavBar'
 import Image from 'next/image'
 import styles from '@Styles/Home.module.css'
-import AccountButton from './AccountButton'
+import AccountButton from './AccountModal'
 import useEth from '@Hooks/useEth'
 import Login from './login/Login'
 
