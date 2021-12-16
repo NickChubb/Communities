@@ -15,7 +15,6 @@ const AccountModal = () => {
             <a className={styles.account_button}>
                 {account || "Log in"}
                 <br />
-                {console.log(pending)}
                 {
                     pending?
                         <p>Pending transaction.</p>

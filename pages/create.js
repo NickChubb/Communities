@@ -77,7 +77,6 @@ const Create = () => {
         });
         updatePending(true);
         transaction.wait().then((receipt) => {
-            console.log(receipt);
             updatePending(false);
         });
     }  

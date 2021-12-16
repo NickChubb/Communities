@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 
 import styles from '@Styles/Home.module.css';
 import Layout from '@Components/Layout'
 import useEth from '@Hooks/useEth';
+import { TransactionPendingContext } from '@Helpers/context';
 
 import { getCommunityContract,
           getCommunityObject } from '@Helpers/community';
@@ -18,6 +19,7 @@ const CommunityPage = () => {
   const [ contract, setContract ] = useState({});
   const [ allowed, setAllowed ] = useState(false);
   const [ loading, setLoading ] = useState(true);
+  const [ pending, updatePending ] = useContext(TransactionPendingContext);
 
   useEffect(async () => {
 
@@ -47,7 +49,11 @@ const CommunityPage = () => {
 
   const handleJoin = async () => {
     // mint token for user
-    await contract.safeMint(wallet);
+    let transaction = await contract.safeMint(wallet);
+    updatePending(true);
+    transaction.wait().then((receipt) => {
+      updatePending(false);
+    })
   }
  
   return (
