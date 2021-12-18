@@ -10,7 +10,7 @@ import "@openzeppelin/contracts/utils/Counters.sol";
 // that can be purchased from the community website.
 contract CommunityHub {
 
-    string public constant VERSION = "0.1";
+    string public constant VERSION = "0.2.0";
     string public constant NAME = "CommunityHub";
 
     // index of created contracts
