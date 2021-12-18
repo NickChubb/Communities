@@ -12,24 +12,14 @@
 				"type": "string"
 			},
 			{
-				"internalType": "string",
-				"name": "description",
-				"type": "string"
-			},
-			{
 				"internalType": "uint256",
 				"name": "size",
 				"type": "uint256"
 			},
 			{
 				"internalType": "string",
-				"name": "image",
+				"name": "metadata",
 				"type": "string"
-			},
-			{
-				"internalType": "bool",
-				"name": "visibility",
-				"type": "bool"
 			}
 		],
 		"stateMutability": "nonpayable",
@@ -112,20 +102,7 @@
 	},
 	{
 		"inputs": [],
-		"name": "_communityDescription",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "_communityImage",
+		"name": "_communityMetadata",
 		"outputs": [
 			{
 				"internalType": "string",
@@ -157,32 +134,6 @@
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "_communitySymbol",
-		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "_communityVisibility",
-		"outputs": [
-			{
-				"internalType": "bool",
-				"name": "",
-				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
@@ -332,6 +283,11 @@
 				"internalType": "address",
 				"name": "to",
 				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "uri",
+				"type": "string"
 			}
 		],
 		"name": "safeMint",
@@ -478,6 +434,19 @@
 			}
 		],
 		"name": "transferFrom",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "transferOwnership",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"

@@ -57,24 +57,14 @@
 				"type": "string"
 			},
 			{
-				"internalType": "string",
-				"name": "description",
-				"type": "string"
-			},
-			{
 				"internalType": "uint256",
 				"name": "size",
 				"type": "uint256"
 			},
 			{
 				"internalType": "string",
-				"name": "image",
+				"name": "metadata",
 				"type": "string"
-			},
-			{
-				"internalType": "bool",
-				"name": "visibility",
-				"type": "bool"
 			}
 		],
 		"name": "createCommunity",
@@ -94,7 +84,7 @@
 		"outputs": [
 			{
 				"internalType": "address[]",
-				"name": "communities",
+				"name": "",
 				"type": "address[]"
 			}
 		],

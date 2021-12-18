@@ -30,11 +30,15 @@ apiRoute.use(async (req, res, next) => {
 // Process a POST request
 apiRoute.post(async (req, res) => {
 
+    console.log(`POST /api/ipfs`);
+
     // Upload Image to IPFS via Pinata
+    console.log(`Uploading image to IPFS...`)
     const imageStream = fs.createReadStream(req.files.communityImage[0].path);
     const pinnedImage = await pinata.pinFileToIPFS(imageStream).catch((err) => {
         console.log(err);
-    });;
+    });
+    console.log(`SUCCESS! Community image uploaded with CID: ${pinnedImage.IpfsHash}`);
 
     // Create JSON document
     const metadata = {
@@ -43,13 +47,15 @@ apiRoute.post(async (req, res) => {
         "description": req.body.communityDescription[0],
         "size": req.body.communitySize[0],
         "image": `ipfs://${pinnedImage.IpfsHash}`,
-        "visibility": req.body.visibility[0]
+        "private": req.body.private[0]
     }
 
     // Upload JSON file to IPFS via Pinata
+    console.log(`Uploading Metadata to IPFS...`)
     const pinnedMetadata = await pinata.pinJSONToIPFS(metadata).catch((err) => {
         console.log(err);
     });
+    console.log(`SUCCESS! Metadata uploaded with CID: ${pinnedMetadata.IpfsHash}`);
 
     res.status(200).send( `ipfs://${pinnedMetadata.IpfsHash}` );
   });

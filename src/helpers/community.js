@@ -13,7 +13,10 @@ const address = process.env.CH_CONTRACT_ADDRESS;
 export const createCommunity = async (signer, data) => {
     
     const communityHub = new ethers.Contract(address, communityHubAbi, signer);
-    return ( await communityHub.createCommunity(data.name, data.symbol, data.description, data.size, data.image, true));
+    const response = await communityHub.createCommunity(data.name, data.symbol, data.size, data.metadata).catch((err) => {
+        console.log(err)
+    });
+    return response;
 }
 
 /**
@@ -37,30 +40,21 @@ export const getCommunityObject = async (provider, address) => {
     console.log(contract);
     const [ 
         name, 
-        symbol, 
-        description, 
         size,
         totalMemberCount, 
-        image, 
-        visibility ] = await Promise.all([
+        metadata ] = await Promise.all([
             contract._communityName(),
-            contract._communitySymbol(),
-            contract._communityDescription(),
             contract._communitySize(),
             contract.getTokenCount(),
-            contract._communityImage(),
-            contract._communityVisibility()
+            contract._communityMetadata()
         ]);
     
     return {
         address: address,
-        name: name, 
-        symbol: symbol, 
-        description: description, 
+        name: name,  
         size: size,
         totalMemberCount: totalMemberCount,
-        image: image,
-        visibility: visibility 
+        metadata: metadata
     };
 }
 

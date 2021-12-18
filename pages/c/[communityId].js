@@ -58,34 +58,35 @@ const CommunityPage = () => {
  
   return (
     <Layout>
-      <h1 className={styles.content_title}>
+      <h1 className={`${styles.content_title} ${styles.community_title}`}>
         {community.name || communityId}
       </h1>
 
       
+      <div className={styles.community_section}>
+        {
+          !loading ?
+            !allowed ?
+              (
+                <div>
+                  <p>{community.description}</p>
 
-      {
-        !loading ?
-          !allowed ?
-            (
-              <div >
-                <p>{community.description}</p>
+                  <p>Members: 
+                    <span>{community.totalMemberCount.toString()}</span>
+                    /  
+                    <span>{community.size.toString()}</span>
+                  </p>
 
-                <p>Members: 
-                  <span>{community.totalMemberCount.toString()}</span>
-                  /  
-                  <span>{community.size.toString()}</span>
-                </p>
+                  <button className={styles.button} onClick={handleJoin}>Join Community</button>
 
-                <button className={styles.button} onClick={handleJoin}>Join Community</button>
-
-              </div>
-            )
+                </div>
+              )
+              :
+              (<p>Welcome to {community.name}</p>)
             :
-            (<p>Welcome to {community.name}</p>)
-          :
-          (<p>Loading...</p>)
-      }
+            (<p>Loading...</p>)
+        }
+      </div>
 
     </Layout>
   )

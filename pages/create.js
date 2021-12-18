@@ -78,7 +78,7 @@ const Create = () => {
         body.append('communitySymbol', data.communitySymbol);
         body.append('communityDescription', data.communityDescription);
         body.append('communitySize', data.communitySize);
-        body.append('visibility', data.visibility);
+        body.append('private', data.visibility == 'private');  // Convert visibility to bool
         body.append('communityImage', data.communityImage[0]);
 
         updatePending(true);
@@ -91,17 +91,13 @@ const Create = () => {
 
         let metadata = await response.text(); 
 
-        updatePending(false);
-
         // Send transaction to Ethereum BC
         // Deploy Community smart contract
         let transaction = await createCommunity(signer, {
             name: data.communityName,
             symbol: data.communitySymbol,
-            description: data.communityDescription,
-            size: data.communitySize,
-            image: data.communityImage[0].name,
-            visibility: data.visibility
+            size: parseInt(data.communitySize),
+            metadata: metadata
         });
 
         // While BC transaction is pending, show pending
@@ -109,6 +105,8 @@ const Create = () => {
         transaction.wait().catch((err) => {
             console.log(err);
         }).then((receipt) => {
+            console.log(receipt);
+            console.log(`Community created successfully!`);
         }).finally(() => {
             updatePending(false);
         });
@@ -136,7 +134,7 @@ const Create = () => {
 
                 <div className={styles.form_field}>
                     <textarea {...register("communityDescription")} placeholder="Community description" />
-                    <small className={styles.textarea_length}>{watchCommunityDescription.length}</small>
+                    <small className={styles.textarea_length}>{watchCommunityDescription?.length}</small>
                     <small className={styles.form_warning}>
                         {getCommunityDescriptionInformation(watchCommunityDescription)}</small>
                 </div>

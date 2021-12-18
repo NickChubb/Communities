@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Loader from 'react-loader-spinner';
 
 import Head from 'next/head'
 import NavBar from './NavBar'
@@ -10,7 +11,7 @@ import Login from './login/Login'
 
 const Layout = (props) => {
 
-    const { wallet } = useEth();
+    const { wallet, loading } = useEth();
 
     return (
         <div className={styles.container}>
@@ -32,13 +33,26 @@ const Layout = (props) => {
                 </div>
 
                 {
-                    !wallet ?
-                        <Login />
+                    loading?
+                        <Loader
+                            type="BallTriangle"
+                            style={{marginTop: '100px'}}
+                            // type="Puff"
+                            color="#00BFFF"
+                            height={150}
+                            width={150} //3 secs
+                        />
                         :
-                        <div className={styles.content} >
-                            {props.children}
-                        </div>
+                        !wallet ?
+                            <Login />
+                            :
+                            <div className={styles.content} >
+                                {props.children}
+                            </div>
+                        
                 }
+
+                
 
 
             </main>
