@@ -64,9 +64,37 @@ const Create = () => {
         }
     }
     
+    /**
+     * Handles the creation of a new community on form submit.
+     * @param {Event} evt 
+     */
     const onSubmit = async (evt) => {
 
         const data = watch();
+        
+        // Append data to FormData
+        const body = new FormData();
+        body.append('communityName', data.communityName);
+        body.append('communitySymbol', data.communitySymbol);
+        body.append('communityDescription', data.communityDescription);
+        body.append('communitySize', data.communitySize);
+        body.append('visibility', data.visibility);
+        body.append('communityImage', data.communityImage[0]);
+
+        updatePending(true);
+
+        // Upload to IPFS and get JSON CID
+        let response = await fetch(`/api/ipfs`, {
+            method: 'post',
+            body: body
+        });
+
+        let metadata = await response.text(); 
+
+        updatePending(false);
+
+        // Send transaction to Ethereum BC
+        // Deploy Community smart contract
         let transaction = await createCommunity(signer, {
             name: data.communityName,
             symbol: data.communitySymbol,
@@ -75,8 +103,13 @@ const Create = () => {
             image: data.communityImage[0].name,
             visibility: data.visibility
         });
-        updatePending(true);
-        transaction.wait().then((receipt) => {
+
+        // While BC transaction is pending, show pending
+        /// notification on screen.
+        transaction.wait().catch((err) => {
+            console.log(err);
+        }).then((receipt) => {
+        }).finally(() => {
             updatePending(false);
         });
     }  

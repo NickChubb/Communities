@@ -1,6 +1,10 @@
 const path = require('path');
 
 module.exports = {
+  webpack: (config) => {
+    config.experiments = { topLevelAwait: true, layers: true };
+    return config;
+  },
   reactStrictMode: true,
   resolve: {
     alias: {

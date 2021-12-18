@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useEthers } from '@usedapp/core';
+import Loader from 'react-loader-spinner';
 
 import Layout from '@Components/Layout'
 import CommunityCard from '@Components/explore/CommunityCard'
@@ -36,7 +37,14 @@ const Explore = () => {
                             return <CommunityCard key={key} community={community} />
                         })
                         :
-                        <p>Loading...</p>
+                        <Loader
+                            type="BallTriangle"
+                            style={{marginTop: '100px'}}
+                            // type="Puff"
+                            color="#00BFFF"
+                            height={150}
+                            width={150} //3 secs
+                        />
                 }
             </div>
         </Layout>

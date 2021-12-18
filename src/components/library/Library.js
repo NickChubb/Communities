@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Loader from 'react-loader-spinner';
 import { useEthers } from '@usedapp/core';
 
 import styles from '@Styles/Home.module.css';
@@ -30,7 +31,14 @@ const Library = () => {
 
         {
           loading?
-            <p>Loading...</p>
+          <Loader
+                type="BallTriangle"
+                style={{marginTop: '100px'}}
+                // type="Puff"
+                color="#00BFFF"
+                height={150}
+                width={150} //3 secs
+            />
             :
             NFTs && NFTs.length > 0 ?
               NFTs.map((nft, key) => {
