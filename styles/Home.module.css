@@ -155,14 +155,32 @@
   border-color: #0070f3;
 }
 
-.account_modal {
-  position: fixed;
-  right: 20px;
-  top: 15px;
-  z-index: 100;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+@media only screen and (max-width: 480px) {
+
+  .account_modal {
+    position: fixed;
+    right: 20px;
+    bottom: 15px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: flex-end;
+  }  
+
+}
+
+@media only screen and (min-width: 481px) {
+
+  .account_modal {
+    position: fixed;
+    right: 20px;
+    top: 15px;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }  
+
 }
 
 .account_modal > * {
