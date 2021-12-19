@@ -16,6 +16,7 @@
     "@metamask/detect-provider": "^1.2.0",
     "@pinata/sdk": "^1.1.23",
     "@usedapp/core": "^0.7.1",
+    "@web3-react/walletconnect-connector": "^6.2.8",
     "ethers": "^5.5.1",
     "events": "^3.3.0",
     "fs": "^0.0.1-security",

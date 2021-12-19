@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
+import { useEthers } from '@usedapp/core';
 
 import styles from '@Styles/Home.module.css';
 import Layout from '@Components/Layout'
@@ -14,23 +15,50 @@ const CommunityPage = () => {
   const router = useRouter()
   const { communityId } = router.query;
 
-  const { provider, signer, wallet } = useEth();
+  const { account, library } = useEthers();
+  // const { provider, signer, wallet } = useEth();
   const [ community, setCommunity ] = useState({});
   const [ contract, setContract ] = useState({});
   const [ allowed, setAllowed ] = useState(false);
   const [ loading, setLoading ] = useState(true);
   const [ pending, updatePending ] = useContext(TransactionPendingContext);
 
-  useEffect(async () => {
+  // useEffect(async () => {
 
-    if (!communityId || !provider || !signer) return;
+  //   if (!communityId || !provider || !signer) return;
+
+  //   // get community by ID
+  //   // Runs async functions at the same time and sets loading to false after
+  //   // both resolve
+  //   Promise.all([ getCommunityContract(signer, communityId), 
+  //                 getCommunityObject(provider, communityId),
+  //                 getAllUserCommunities(wallet, provider)]).then((res) => {
+
+  //                   setContract(res[0]);
+  //                   setCommunity(res[1]);
+
+  //                   // If the user's communities contains an NFT which has a contract
+  //                   // Address that matches the community ID, allow access.
+  //                   if (res[2].map((communityObject) => communityObject.contractAddress)
+  //                             .includes(res[1].address)) {
+  //                               setAllowed(true);
+  //                             }
+
+  //                   setLoading(false);
+  //                 });
+
+  // }, [communityId, provider, signer])
+
+  useEffect(() => {
+
+    if (!account || !library) return;
 
     // get community by ID
     // Runs async functions at the same time and sets loading to false after
     // both resolve
-    Promise.all([ getCommunityContract(signer, communityId), 
-                  getCommunityObject(provider, communityId),
-                  getAllUserCommunities(wallet, provider)]).then((res) => {
+    Promise.all([ getCommunityContract(library, communityId), 
+                  getCommunityObject(library, communityId),
+                  getAllUserCommunities(account, library)]).then((res) => {
 
                     setContract(res[0]);
                     setCommunity(res[1]);
@@ -45,11 +73,11 @@ const CommunityPage = () => {
                     setLoading(false);
                   });
 
-  }, [communityId, provider, signer])
+  }, [account, library])
 
   const handleJoin = async () => {
     // mint token for user
-    let transaction = await contract.safeMint(wallet);
+    let transaction = await contract.safeMint(account);
     updatePending(true);
     transaction.wait().then((receipt) => {
       updatePending(false);

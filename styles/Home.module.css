@@ -19,17 +19,22 @@
   /* box-shadow: 1px 2px 5px #3f3f3f; */
   padding: 0px 30px 50px 30px;
   margin-top: 120px;
+  
 }
 
 .content_title {
   color: #eaeadf;
   text-align: center;
-  background-color: #2c2c2c;
-  border: 1px solid #282828;
+  /* background-color: #2c2c2c;
+  border: 1px solid #282828; */
   padding: 15px;
   border-radius: 10px;
   margin-left: 16px;
   margin-right: 16px;
+
+  border: 1px solid #242424;
+  background-color: #2a2a2a;
+  box-shadow: 1px 1px 2px #222222;
 }
 
 .community_title {
@@ -306,6 +311,7 @@
   background-color: #eaeae2;
   border: 1px solid #babab2;
   transition: 0.3s all;
+  cursor: pointer;
 }
 
 .form input[type=submit]:hover,

@@ -1,5 +1,6 @@
 import React from 'react';
 import Loader from 'react-loader-spinner';
+import { useEthers } from '@usedapp/core';
 
 import Head from 'next/head'
 import NavBar from './NavBar'
@@ -11,7 +12,8 @@ import Login from './login/Login'
 
 const Layout = (props) => {
 
-    const { wallet, loading } = useEth();
+    // const { wallet, loading } = useEth();
+    const { account, active } = useEthers();
 
     return (
         <div className={styles.container}>
@@ -31,19 +33,19 @@ const Layout = (props) => {
 
                     <NavBar />
                 </div>
-
+        
                 {
-                    loading?
-                        <Loader
-                            type="BallTriangle"
-                            style={{marginTop: '100px'}}
-                            // type="Puff"
-                            color="#00BFFF"
-                            height={150}
-                            width={150} //3 secs
-                        />
-                        :
-                        !wallet ?
+                    // loading?
+                    //     <Loader
+                    //         type="BallTriangle"
+                    //         style={{marginTop: '100px'}}
+                    //         // type="Puff"
+                    //         color="#00BFFF"
+                    //         height={150}
+                    //         width={150} //3 secs
+                    //     />
+                    //     :
+                        !account ?
                             <Login />
                             :
                             <div className={styles.content} >

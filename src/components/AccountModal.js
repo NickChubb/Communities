@@ -8,7 +8,7 @@ import { TransactionPendingContext } from '@Helpers/context';
 
 const AccountModal = () => {
     
-    const { account } = useEthers();
+    const { account, deactivate } = useEthers();
     const [ pending ] = useContext(TransactionPendingContext);
     const [ showDropdown, setShowDropdown ] = useState(false);
 
@@ -18,9 +18,16 @@ const AccountModal = () => {
  
     return (
         <div  className={styles.account_modal}>
-            <div className={styles.account_dropdown_button} onClick={toggleDropdown}>
-                {account || "Log in"}
-            </div>
+            {
+                account?
+                    <div className={styles.account_dropdown_button} onClick={toggleDropdown}>
+                        { account?.substring(0,6) + '...' + account?.substring(account?.length - 4) }
+                    </div>
+                    :
+                    <div className={styles.account_dropdown_button}>
+                        Connect Wallet
+                    </div>
+            }
             {
                 showDropdown?
 
@@ -33,17 +40,24 @@ const AccountModal = () => {
                                     </a>
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link href={`/u/${account}`}>
                                     <a>
                                         Recent transactions
                                     </a>
                                 </Link>
-                            </li>
-                            <li>
+                            </li> */}
+                            {/* <li>
                                 <a href={`https://etherscan.io/address/${account}`}>
                                     View on etherscan
                                 </a>
+                            </li> */}
+                            <li onClick={deactivate}>
+                                <Link href={`/`}>
+                                    <a>
+                                        Disconnect
+                                    </a>
+                                </Link>
                             </li>
                         </ul>
                     </div>

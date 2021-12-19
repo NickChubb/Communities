@@ -18,7 +18,7 @@ const Library = () => {
     setNFTs(await getAllUserCommunities(account, library));
     setLoading(false);
 
-  }, [account, library])
+  }, [library])
 
   return (
     <div >
@@ -31,7 +31,7 @@ const Library = () => {
 
         {
           loading?
-          <Loader
+            <Loader
                 type="BallTriangle"
                 style={{marginTop: '100px'}}
                 // type="Puff"
