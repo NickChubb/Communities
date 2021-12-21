@@ -16,36 +16,66 @@ contract CommunityHub is Ownable {
     // Metadata
     string public constant VERSION = "0.3.0";
     string public constant NAME = "CommunityHub";
+    
+
+    /*
+
+        What if we do these mappings around communities instead of community cards?
+
+        eg:
+
+        struct Card {
+            address memberAddress;
+            uint256 since;
+        }
+
+        ****NO we want to sort around users to quickly return
+        the member's cards.****
+
+    */
 
     // index of created Community addresses
     address[] public _communities;
 
     // Info for communities user has joined
-    struct CommunityInfo {
+    struct  Community {
         address communityAddress;
-        uint256 since;
+        mapping ( uint256 => since ) cards;
     }
 
-    struct User {
+    // Mapping of user addresses to array of communities membership cards they own
+    mapping (address => Community[] ) public _users;
 
-    }
-
-    // Mapping of addresses to array of communities they are in and since when
-    mapping (address => User) public users;
-
-    
-
-    function getCommunityCount() public view returns(uint communityCount) {
+    function getAllCommunityCount() public view returns(uint communityCount) {
         return _communities.length;
     }
 
-    function getCommunities() public view returns (address[] memory) {
+    function getAllCommunities() public view returns (address[] memory) {
         return _communities;
     }
 
-    // Leave Community
+    function _transferCardOwnership(
+        address from, 
+        address to, 
+        uint256 tokenId,
+        address communityAddress
+    ) internal {
 
-    // Join Community
+        // pop from array for from address
+        // add reward credits to from address
+        // set block timestamp
+        // push to array for to address
+
+    }
+
+    // Get user's communities
+    function getCommunities(
+        address user
+    ) public view returns (Community[] memory communities) {
+        return _users[user];
+    }
+
+    // 
 
     /**
     * 
@@ -115,11 +145,13 @@ contract Community is ERC721, ERC721URIStorage, Ownable {
     /// in the CommunityHub contract, which allows users to gain tokens
     /// for holding Membership Cards.
 
-    // transfer
-    // safeTransfer
-    // etc.
-
-
+    function _afterTokenTransfer(
+        address from,
+        address to,
+        uint256 tokenId
+    ) internal override {
+        _communityHubContract._transferCardOwnership(from, to, tokenId, address(this));
+    }
 
     /* The following functions are overrides required by Solidity. */
 

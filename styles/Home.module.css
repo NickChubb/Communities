@@ -191,15 +191,24 @@
 .account_dropdown_button {
   background: #242424;
   color: inherit;
-  max-width: 150px;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding: 10px;
   border-radius: 10px;
   border: 1px solid #202020;
   cursor: pointer;
   user-select: none;
-  
+  vertical-align: center;
+  display: flex;
+}
+
+.account_dropdown_button span {
+  padding: 10px;
+}
+
+
+.account_dropdown_icon {
+  padding: 11px 11px 10px 10px;
+  background-color: #292929;
 }
 
 
@@ -207,10 +216,25 @@
 .account_modal_popup {
   background: #242424;
   color: inherit;
-  padding: 10px;
+  padding: 10px 0px 10px 0px;
   border-radius: 10px;
   border: 1px solid #222222;
   transition: display 0.5s;
+}
+
+.account_modal_popup ul li {
+  padding: 7px 20px 7px 15px;
+}
+
+.account_modal_popup ul li svg {
+  vertical-align: text-bottom;
+  margin-right: 5px;
+}
+
+
+
+.account_modal_popup ul li:hover{
+  background-color: #282828;
 }
 
 @keyframes borderBlink {    
@@ -238,14 +262,6 @@
   list-style: none;
   padding-left: 0px;
   margin: 0px 0px 0px 0px;
-}
-
-.account_modal_popup ul li {
-  padding: 5px;
-}
-
-.account_modal_popup ul li:hover {
-
 }
 
 

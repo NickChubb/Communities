@@ -1,6 +1,10 @@
 import React, { useContext, useState } from 'react';
 import Loader from "react-loader-spinner";
 import Link from 'next/link';
+import { GiHamburgerMenu, GiExitDoor } from 'react-icons/gi'
+import { BsFillPersonFill } from 'react-icons/bs'
+import { RiLogoutBoxRFill } from 'react-icons/ri'
+
 import useEth from '@Hooks/useEth';
 import styles from '@Styles/Home.module.css'
 import { useEthers } from "@usedapp/core";
@@ -18,16 +22,24 @@ const AccountModal = () => {
  
     return (
         <div  className={styles.account_modal}>
-            {
-                account?
-                    <div className={styles.account_dropdown_button} onClick={toggleDropdown}>
-                        { account?.substring(0,6) + '...' + account?.substring(account?.length - 4) }
-                    </div>
-                    :
-                    <div className={styles.account_dropdown_button}>
-                        Connect Wallet
-                    </div>
-            }
+
+            <div className={styles.account_dropdown_button} onClick={toggleDropdown}>
+                
+                {
+                    account?
+                        <span>
+                            { account?.substring(0,6) + '...' + account?.substring(account?.length - 4) }
+                        </span>
+                        :
+                        <span>
+                            Connect Wallet
+                        </span>
+                }
+
+                <div className={styles.account_dropdown_icon}>
+                    <GiHamburgerMenu />
+                </div>
+            </div>
             {
                 showDropdown?
 
@@ -36,7 +48,7 @@ const AccountModal = () => {
                             <li>
                                 <Link href={`/u/${account}`}>
                                     <a>
-                                        My account
+                                        <BsFillPersonFill /> My account
                                     </a>
                                 </Link>
                             </li>
@@ -55,7 +67,7 @@ const AccountModal = () => {
                             <li onClick={deactivate}>
                                 <Link href={`/`}>
                                     <a>
-                                        Disconnect
+                                        <RiLogoutBoxRFill /> Disconnect
                                     </a>
                                 </Link>
                             </li>

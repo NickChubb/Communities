@@ -77,6 +77,7 @@ const CommunityPage = () => {
 
   const handleJoin = async () => {
     // mint token for user
+    console.log(contract);
     let transaction = await contract.safeMint(account);
     updatePending(true);
     transaction.wait().then((receipt) => {
