@@ -1,107 +1,226 @@
 [
 	{
+		"anonymous": false,
+		"inputs": [
+		  {
+			"indexed": true,
+			"internalType": "address",
+			"name": "previousOwner",
+			"type": "address"
+		  },
+		  {
+			"indexed": true,
+			"internalType": "address",
+			"name": "newOwner",
+			"type": "address"
+		  }
+		],
+		"name": "OwnershipTransferred",
+		"type": "event"
+	  },
+	  {
+		"inputs": [],
+		"name": "BASE_REWARD",
+		"outputs": [
+		  {
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
 		"inputs": [],
 		"name": "NAME",
 		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
+		  {
+			"internalType": "string",
+			"name": "",
+			"type": "string"
+		  }
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+	  },
+	  {
+		"inputs": [],
+		"name": "REWARD_FREQUENCY",
+		"outputs": [
+		  {
+			"internalType": "uint256",
+			"name": "",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
 		"inputs": [],
 		"name": "VERSION",
 		"outputs": [
-			{
-				"internalType": "string",
-				"name": "",
-				"type": "string"
-			}
+		  {
+			"internalType": "string",
+			"name": "",
+			"type": "string"
+		  }
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+	  },
+	  {
 		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
+		  {
+			"internalType": "address",
+			"name": "_from",
+			"type": "address"
+		  },
+		  {
+			"internalType": "address",
+			"name": "_to",
+			"type": "address"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "_tokenId",
+			"type": "uint256"
+		  },
+		  {
+			"internalType": "address",
+			"name": "_communityAddress",
+			"type": "address"
+		  }
 		],
-		"name": "_communities",
-		"outputs": [
-			{
-				"internalType": "address",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
+		"name": "_transferCardOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+	  },
+	  {
 		"inputs": [
-			{
-				"internalType": "string",
-				"name": "name",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "symbol",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "size",
-				"type": "uint256"
-			},
-			{
-				"internalType": "string",
-				"name": "metadata",
-				"type": "string"
-			}
+		  {
+			"internalType": "string",
+			"name": "_name",
+			"type": "string"
+		  },
+		  {
+			"internalType": "string",
+			"name": "_symbol",
+			"type": "string"
+		  },
+		  {
+			"internalType": "uint256",
+			"name": "_size",
+			"type": "uint256"
+		  },
+		  {
+			"internalType": "string",
+			"name": "_metadata",
+			"type": "string"
+		  }
 		],
 		"name": "createCommunity",
 		"outputs": [
-			{
-				"internalType": "address",
-				"name": "newCommunity",
-				"type": "address"
-			}
+		  {
+			"internalType": "address",
+			"name": "_newCommunity",
+			"type": "address"
+		  }
 		],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
+	  },
+	  {
 		"inputs": [],
+		"name": "getAllCommunities",
+		"outputs": [
+		  {
+			"internalType": "address[]",
+			"name": "",
+			"type": "address[]"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "getAllCommunityCount",
+		"outputs": [
+		  {
+			"internalType": "uint256",
+			"name": "communityCount",
+			"type": "uint256"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "_user",
+			"type": "address"
+		  }
+		],
 		"name": "getCommunities",
 		"outputs": [
-			{
-				"internalType": "address[]",
-				"name": "",
-				"type": "address[]"
-			}
+		  {
+			"internalType": "address[]",
+			"name": "_userCommunities",
+			"type": "address[]"
+		  }
 		],
 		"stateMutability": "view",
 		"type": "function"
-	},
-	{
+	  },
+	  {
 		"inputs": [],
-		"name": "getCommunityCount",
+		"name": "owner",
 		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "communityCount",
-				"type": "uint256"
-			}
+		  {
+			"internalType": "address",
+			"name": "",
+			"type": "address"
+		  }
 		],
 		"stateMutability": "view",
 		"type": "function"
-	}
+	  },
+	  {
+		"inputs": [],
+		"name": "renounceOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  },
+	  {
+		"inputs": [],
+		"name": "token",
+		"outputs": [
+		  {
+			"internalType": "contract CommunityToken",
+			"name": "",
+			"type": "address"
+		  }
+		],
+		"stateMutability": "view",
+		"type": "function"
+	  },
+	  {
+		"inputs": [
+		  {
+			"internalType": "address",
+			"name": "newOwner",
+			"type": "address"
+		  }
+		],
+		"name": "transferOwnership",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	  }
 ]

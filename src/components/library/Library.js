@@ -3,8 +3,9 @@ import Loader from 'react-loader-spinner';
 import { useEthers } from '@usedapp/core';
 
 import styles from '@Styles/Home.module.css';
-import { getAllUserCommunities } from '@Helpers/eth';
 import LibraryCard from '@Components/library/LibraryCard';
+import CommunityCard from '@Components/explore/CommunityCard';
+import { getAllUserCommunities } from '@Helpers/communityHub';
 
 const Library = () => {
 
@@ -15,7 +16,7 @@ const Library = () => {
 
   useEffect(async() => {
     if (!account || !library) return;
-    setNFTs(await getAllUserCommunities(account, library));
+    setNFTs(await getAllUserCommunities(library, account));
     setLoading(false);
 
   }, [library])
@@ -42,8 +43,9 @@ const Library = () => {
             :
             NFTs && NFTs.length > 0 ?
               NFTs.map((nft, key) => {
-                console.log(nft)
-                return <LibraryCard key={key} community={nft} />
+                console.log(nft);
+                // return <LibraryCard key={key} community={nft} />
+                return <CommunityCard key={key} community={nft} />
               })
               :
               <div>

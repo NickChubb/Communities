@@ -9,14 +9,15 @@ import { TransactionPendingContext } from '@Helpers/context';
 
 import { getCommunityContract,
           getCommunityObject } from '@Helpers/community';
-import { getAllUserCommunities } from '@Helpers/eth';
+import { getAllUserCommunities } from '@Helpers/communityHub';
+import CommunityHomePage from '@Components/community/CommunityHomePage';
 
 const CommunityPage = () => {
   const router = useRouter()
   const { communityId } = router.query;
 
   const { account, library } = useEthers();
-  // const { provider, signer, wallet } = useEth();
+  const { signer } = useEth();
   const [ community, setCommunity ] = useState({});
   const [ contract, setContract ] = useState({});
   const [ allowed, setAllowed ] = useState(false);
@@ -51,21 +52,21 @@ const CommunityPage = () => {
 
   useEffect(() => {
 
-    if (!account || !library) return;
+    if (!account || !library || !signer) return;
 
     // get community by ID
     // Runs async functions at the same time and sets loading to false after
     // both resolve
-    Promise.all([ getCommunityContract(library, communityId), 
+    Promise.all([ getCommunityContract(signer, communityId), 
                   getCommunityObject(library, communityId),
-                  getAllUserCommunities(account, library)]).then((res) => {
+                  getAllUserCommunities(library, account)]).then((res) => {
 
                     setContract(res[0]);
                     setCommunity(res[1]);
 
                     // If the user's communities contains an NFT which has a contract
                     // Address that matches the community ID, allow access.
-                    if (res[2].map((communityObject) => communityObject.contractAddress)
+                    if (res[2].map((communityObject) => communityObject.address)
                               .includes(res[1].address)) {
                                 setAllowed(true);
                               }
@@ -73,12 +74,11 @@ const CommunityPage = () => {
                     setLoading(false);
                   });
 
-  }, [account, library])
+  }, [account, library, signer])
 
   const handleJoin = async () => {
     // mint token for user
-    console.log(contract);
-    let transaction = await contract.safeMint(account);
+    let transaction = await contract.safeMint(account, "");
     updatePending(true);
     transaction.wait().then((receipt) => {
       updatePending(false);
@@ -111,7 +111,7 @@ const CommunityPage = () => {
                 </div>
               )
               :
-              (<p>Welcome to {community.name}</p>)
+              (<CommunityHomePage />)
             :
             (<p>Loading...</p>)
         }

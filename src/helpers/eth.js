@@ -24,7 +24,7 @@ export const requestAccount = async (handleAccountsChanged) => {
 }
 
 /**
- * 
+ * !DEPRECIATED use @Helpers/communityHub.js/getAllUserCommunities
  * @param {*} wallet 
  * @returns 
  */

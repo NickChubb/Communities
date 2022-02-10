@@ -6,7 +6,7 @@ import Layout from '@Components/Layout'
 import CommunityCard from '@Components/explore/CommunityCard'
 import styles from '@Styles/Home.module.css'
 import useEth from '@Hooks/useEth'
-import { getAllCommunities, getAllCommunitiesAddr, getAllCommunityObjects } from '@Helpers/community'
+import { getAllCommunityObjects } from '@Helpers/communityHub'
 import Loading from '@Components/Loading'
 
 const Explore = () => {
