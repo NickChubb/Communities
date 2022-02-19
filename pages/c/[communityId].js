@@ -111,7 +111,7 @@ const CommunityPage = () => {
                 </div>
               )
               :
-              (<CommunityHomePage />)
+              (<CommunityHomePage userId={account} communityId={communityId} />)
             :
             (<p>Loading...</p>)
         }
