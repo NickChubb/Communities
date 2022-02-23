@@ -5,7 +5,7 @@ import useEth from '@Hooks/useEth';
 import { useForm } from 'react-hook-form';
 import Layout from '@Components/Layout';
 import styles from '@Styles/Home.module.css';
-import { createCommunity } from '@Helpers/community';
+import { createCommunity } from '@Helpers/communityHub';
 import { TransactionPendingContext } from '@Helpers/context';
 
 /**

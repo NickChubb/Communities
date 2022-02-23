@@ -2,9 +2,11 @@ import React from 'react';
 import Loader from 'react-loader-spinner';
 import { useEthers } from '@usedapp/core';
 
+
 import Head from 'next/head'
 import NavBar from './NavBar'
 import Image from 'next/image'
+import Link from 'next/link';
 import styles from '@Styles/Home.module.css'
 import AccountButton from './AccountModal'
 import useEth from '@Hooks/useEth'
@@ -27,9 +29,13 @@ const Layout = (props) => {
 
             <main className={styles.main}>
                 <div className={styles.header}>
-                    <h1 className={styles.title}>
-                        Communities
-                    </h1>
+                    <Link href='/'>
+                        <a>
+                            <h1 className={styles.title}>
+                                Communities
+                            </h1>
+                        </a>
+                    </Link>
 
                     <NavBar />
                 </div>

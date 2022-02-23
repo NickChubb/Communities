@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import { getPosts } from '@Helpers/social';
 import styles from '@Styles/Home.module.css';
 import Loader from 'react-loader-spinner';
+import PostCard from '@Components/feed/PostCard';
+import PostFeed from '@Components/feed/PostFeed';
 
 const CommunityHomePage = ({ userId, communityId }) => {
 
@@ -54,15 +56,7 @@ const CommunityHomePage = ({ userId, communityId }) => {
                             width={150} //3 secs
                         />
                         :
-                        feed && feed.length > 0?
-
-                            feed.map((post, key) => (
-                                <div key={key}>
-                                    <p><span>{post?.author}: </span><b>{post?.post}</b></p>
-                                </div>
-                            ))
-                            :
-                            <p>No posts yet in community... Say Hi!</p>
+                        <PostFeed feed={feed} />
                             
                 }
             </div>

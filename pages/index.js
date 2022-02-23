@@ -1,33 +1,49 @@
+import { useEffect, useState } from "react";
 import Loader from "react-loader-spinner";
 import Layout from '@Components/Layout';
 import Library from "@Components/library/Library";
 import useEth from '@Hooks/useEth';
-import { useEthers } from "@usedapp/core"; 
+import { useEthers } from "@usedapp/core";
+import { getPosts } from '@Helpers/social';
+import PostFeed from "@Components/feed/PostFeed";
 
 export default function Home() {
 
-  const { wallet, setWallet,
-          provider, setProvider,
-          signer, setSigner,
-          loading } = useEth();
+    const { wallet, setWallet,
+            provider, setProvider,
+            signer, setSigner,
+            loading } = useEth();
 
-  const { account } = useEthers();
+    const { account } = useEthers();
+
+    const [ feed, setFeed ] = useState();
+    const [ isLoading, setLoading ] = useState(true);
+
+    useEffect(() => {
+      
+        const getFeed = async () => {
+            setFeed(await getPosts(wallet));
+            setLoading(false);
+        }
+
+        getFeed();
+    }, [isLoading])
   
   return (
     <Layout>
 
-    {
-      loading?
-        <Loader
-            type="BallTriangle"
-            // type="Puff"
-            color="#00BFFF"
-            height={200}
-            width={200} //3 secs
-        />
-        :
-        <Library wallet={wallet} provider={provider} signer={signer} />
-    }
+      {
+        isLoading && loading?
+            <Loader
+                type="BallTriangle"
+                // type="Puff"
+                color="#00BFFF"
+                height={200}
+                width={200} //3 secs
+            />
+            :
+            <PostFeed feed={feed} />
+        }
             
     </Layout>
   )

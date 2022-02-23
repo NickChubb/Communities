@@ -6,7 +6,7 @@ const useContract = (contract, func, transactionName) => {
     const [ pending, setPending ] = useState(false);
 
     const { state, send } = useContractFunction(contract, func, { transactionName: transactionName });
-    set
+    
 
     return 
 

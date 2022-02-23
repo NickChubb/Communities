@@ -6,7 +6,7 @@ const NavBar = () => {
     return (
         <ul className={styles.nav_bar}>
            <li>
-               <Link href="/">
+               <Link href="/library">
                     <a>My Communities</a>
                </Link>
             </li>
