@@ -16,7 +16,7 @@ const CommunityHomePage = ({ userId, communityId }) => {
     useEffect(() => {
       
         const getFeed = async () => {
-            setFeed(await getPosts(userId));
+            setFeed(await getPosts(userId, { communityId: communityId }));
             setLoading(false);
         }
 

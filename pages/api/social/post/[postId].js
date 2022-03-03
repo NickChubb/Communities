@@ -5,8 +5,6 @@ export default function handler (req, res) {
         // Endpoint to get individual post by ID.
 
         const { postId } = req.query;
-        const userId = req.body.data.userId;
-        const communityId = req.body.data.communityId;
         
         // Get from database
 

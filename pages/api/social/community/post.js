@@ -1,7 +1,7 @@
-/// Endpoints which interact with users available posts
+/// Endpoints which interact with posts specific to a community
 
 // Import database.
-import { connectToDatabase } from '../../../lib/mongodb'
+import { connectToDatabase } from '../../../../lib/mongodb'
 
 export default async function handler (req, res) {
 
@@ -11,13 +11,14 @@ export default async function handler (req, res) {
     if (req.method === 'GET') {
         // Logic for getting posts from database.
 
+        const { communityId } = req.query;
         // date?
         // page?
 
         // ! NEED TO FIGURE OUT ALGORITHM TO GET POSTS SEMI-RANDOMLY
         // ! AND SORTED BASED ON TIME.
-
-        const response = await posts.find().sort({_id:-1}).toArray();
+        console.log(communityId);
+        const response = await posts.find({ 'community': communityId }).sort({_id:-1}).toArray();
         return res.json(response);
         
     } else if (req.method === 'POST') {
@@ -31,8 +32,7 @@ export default async function handler (req, res) {
         const res = await posts.insert({
                 author: userId,
                 community: communityId,
-                post: post,
-                datetime: new Date()
+                post: post
             });
 
         res.send(200);

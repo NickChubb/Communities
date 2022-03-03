@@ -1,11 +1,25 @@
-
 const BASE_URL = `/api/social`;
 
-// Gets posts from community if user is in community.
-export const getPosts = async ( userId, count=15 ) => {
-    
-    const res = await fetch(`${BASE_URL}/post`, {
-        method: 'GET'
+/**
+ * Get posts from the database
+ * @param {*} userId 
+ * @param {*} params 
+ * @returns 
+ */
+export const getPosts = async ( userId, params ) => {
+
+    const { count = 15, communityId } = params || {};
+    let url = `${BASE_URL}`
+
+    if (communityId) {
+        url = url += `/community`;
+    }
+
+    const res = await fetch(`${url}/post?` + new URLSearchParams({
+        count: count,
+        communityId: communityId
+    }), {
+        method: 'GET',
     })
 
     return await res.json();
