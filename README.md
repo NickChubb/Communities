@@ -10,7 +10,7 @@ The intention was to be a sort of "Social Network" in which access to community 
 2. Meta-information about Communities, such as the community image, is hosted on the [Inter Planetary File System (IPFS)](https://ipfs.tech/)
 3. Posts in a community are stored on a separate backend database, for example MongoDB
 
-To see the Contracts created for this project, see here: [CommunityContracts](https://github.com/NickChubb/CommunityContracts).
+To see the Contracts created for this project, see here: [Contracts](https://github.com/NickChubb/CommunityContracts).
 
 ## Final Progress
 
