@@ -29,12 +29,16 @@ By the time I stopped working on this project, I had implemented several feature
 
 #### Homepage before wallet is connected
 
-<img width="1800" alt="Screenshot 2023-10-12 at 3 43 35 PM" src="https://github.com/NickChubb/Communities/assets/4172020/27ceec6c-b939-4fb7-929d-f73e08c44904">
+<img width="1800" alt="Screenshot 2023-10-12 at 3 43 35 PM" src="https://github.com/NickChubb/Communities/assets/4172020/a4a9b272-045f-4474-a975-60a3dde9fc7f">
+
 
 #### Create a new Community
 
-<img width="1800" alt="Screenshot 2023-10-12 at 3 44 48 PM" src="https://github.com/NickChubb/Communities/assets/4172020/90f055a7-d6d2-4f8a-a526-2bc66717b1f0">
+<img width="1800" alt="Screenshot 2023-10-12 at 3 44 48 PM" src="https://github.com/NickChubb/Communities/assets/4172020/d283b6f0-caea-4ddc-8cc3-d2cfae6a0c0d">
+
 
 ## Live Demo
 
-Since the depreciation of the Ropsten test network, there is no longer a live demo of the site. I am working on uploading the contracts to a different test network currently.
+The link for the live demo can be found here: [Communities Testnet Demo](https://communities-mocha.vercel.app)
+
+Since the depreciation of the Ropsten test network, the live demo is no longer properly working. I am working on uploading the contracts to a different test network currently (Oct 2023).
