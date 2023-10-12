@@ -1,34 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# EthCommunities (Inactive 🚫)
 
-## Getting Started
+Communities was a project that I started in an effort to learn and understand Ethereum Smart Contracts (with [Solidity](https://soliditylang.org/)) and interacting with a Blockchain as a decentralized backend service. 
 
-First, run the development server:
+The intention was to be a sort of "Social Network" in which access to community channels (groups) was controlled by holding [ERC-721 (Non-fungible) tokens](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/). The intention of this being that the number of access cards to a group would be limited.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+To see the Contracts created for this project, see here: [CommunityContracts](https://github.com/NickChubb/CommunityContracts).
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Final Progress
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+By the time I stopped working on this project, I had implemented several features and have a bare-bones example live on the Ropsten Test-Network.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### Features Implemented:
+- Creating Community Access Tokens
+- Created [ERC-20 (fungible)](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) for each community, allowing each community to have its own "currency"
+- 
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+### Photos
 
-## Learn More
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Live Demo
