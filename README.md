@@ -13,9 +13,17 @@ By the time I stopped working on this project, I had implemented several feature
 ### Features Implemented:
 - Creating Community Access Tokens
 - Created [ERC-20 (fungible)](https://ethereum.org/en/developers/docs/standards/tokens/erc-20/) for each community, allowing each community to have its own "currency"
-- 
 
 ### Photos
 
+#### Homepage before wallet is connected
+
+<img width="1800" alt="Screenshot 2023-10-12 at 3 43 35 PM" src="https://github.com/NickChubb/Communities/assets/4172020/27ceec6c-b939-4fb7-929d-f73e08c44904">
+
+#### Create a new Community
+
+<img width="1800" alt="Screenshot 2023-10-12 at 3 44 48 PM" src="https://github.com/NickChubb/Communities/assets/4172020/90f055a7-d6d2-4f8a-a526-2bc66717b1f0">
 
 ## Live Demo
+
+Since the depreciation of the Ropsten test network, there is no longer a live demo of the site. I am working on uploading the contracts to a different test network currently.
