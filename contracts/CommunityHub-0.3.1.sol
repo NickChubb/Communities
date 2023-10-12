@@ -116,7 +116,7 @@ contract CommunityHub is Ownable {
         emit CardTransfer(_from, _to, _tokenId, _communityAddress); 
 
         // Requires function call to be from Community
-        require(msg.sender == _communityAddress, "Only the community may change it's card ownership.");
+        require(msg.sender == _communityAddress, "Only the community may change it\'s card ownership.");
 
         if (_from != address(0)) {
 
