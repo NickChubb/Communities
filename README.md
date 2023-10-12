@@ -4,7 +4,7 @@ Communities was a project that I started in an effort to learn and understand Et
 
 The intention was to be a sort of "Social Network" in which access to community channels (groups) was controlled by holding [ERC-721 (Non-fungible) tokens](https://ethereum.org/en/developers/docs/standards/tokens/erc-721/). The intention of this being that the number of access cards to a group would be limited. Communities can be either public (any user can see posts in the community, but only users with an access token can make posts) or private (only users with an access token can post or view the community).
 
-**Tech Stack: React.js, Next.js, MongoDB, Solidity**
+**🛠️ Tech Stack: JavaScript, React.js, Next.js, MongoDB, Solidity**
 
 ### How the backend works
 
