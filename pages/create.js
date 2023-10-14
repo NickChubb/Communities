@@ -118,7 +118,7 @@ const Create = () => {
                 Create a Community
             </h1>
 
-            <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+            <form onSubmit={handleSubmit(onSubmit)} className={`${styles.form} ${styles.form_create_community}`}>
 
                 <div className={styles.form_field}>
                     <input {...register("communityName")} placeholder="Community name" />

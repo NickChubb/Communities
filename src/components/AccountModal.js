@@ -9,6 +9,7 @@ import useEth from '@Hooks/useEth';
 import styles from '@Styles/Home.module.css'
 import { useEthers } from "@usedapp/core";
 import { TransactionPendingContext } from '@Helpers/context';
+import { fmtUserAddr } from '@Helpers/format';
 
 const AccountModal = () => {
     
@@ -21,28 +22,40 @@ const AccountModal = () => {
     }
  
     return (
-        <div  className={styles.account_modal}>
-
-            <div className={styles.account_dropdown_button} onClick={toggleDropdown}>
-                
+        <div className={styles.account_modal}>
+            <div className={styles.account_modal_wrapper} onClick={toggleDropdown}>
                 {
-                    account?
-                        <span>
-                            { account?.substring(0,6) + '...' + account?.substring(account?.length - 4) }
-                        </span>
+                    pending?
+                        <div className={`${styles.account_modal_pending} ${styles.account_pending_transaction}`}>
+                            <Loader
+                                type="BallTriangle"
+                                // type="Puff"
+                                color="#282828"
+                                height={20}
+                                width={20} //3 secs
+                            />
+                        </div>
                         :
-                        <span>
-                            Connect Wallet
-                        </span>
+                        <></>
                 }
-
-                <div className={styles.account_dropdown_icon}>
-                    <GiHamburgerMenu />
-                </div>
+                <div className={styles.account_modal_button}>
+                    {
+                        account?
+                            <span className={styles.account_modal_text} >
+                                { fmtUserAddr(account) }
+                            </span>
+                            :
+                            <span className={styles.account_modal_text}>
+                                Connect Wallet
+                            </span>
+                    }
+                    <div className={styles.account_dropdown_icon}>
+                        <GiHamburgerMenu />
+                    </div>
+                </div>             
             </div>
             {
                 showDropdown?
-
                     <div className={styles.account_modal_popup}>
                         <ul>
                             <li>
@@ -76,24 +89,7 @@ const AccountModal = () => {
                     :
                     <></>
             }
-            {
-                pending?
-
-                    <div className={`${styles.account_modal_popup} ${styles.account_pending_transaction}`}>
-                        
-                        <Loader
-                            type="BallTriangle"
-                            // type="Puff"
-                            color="#00BFFF"
-                            height={20}
-                            width={20} //3 secs
-                        />
-                        <span>Pending transaction</span>
-
-                    </div>
-                    :
-                    <></>
-            }
+            
         </div>
     )
 }

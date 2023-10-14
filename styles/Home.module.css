@@ -189,6 +189,12 @@
   box-shadow: 1px 2px 4px #272727;
 }
 
+.account_modal_wrapper {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+}
+
 .account_dropdown_button {
   background: #242424;
   color: inherit;
@@ -202,10 +208,9 @@
   display: flex;
 }
 
-.account_dropdown_button span {
+.account_modal_text {
   padding: 10px;
 }
-
 
 .account_dropdown_icon {
   padding: 9px 11px 10px 10px;
@@ -216,7 +221,27 @@
   vertical-align: text-bottom;
 }
 
+.account_modal_pending {
+  background-color: #00a2dd;
+  color: #282828;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin-right: -10px;
+  border: 1px solid #00a0da;
+}
 
+.account_modal_button {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-radius: 10px;
+  border: 1px solid #202020;
+  cursor: pointer;
+  user-select: none;
+  vertical-align: center;
+  background-color: #242424;
+}
 
 .account_modal_popup {
   background: #242424;
@@ -255,12 +280,12 @@
   display: flex;
   align-items: center;
   border: 1px solid #00a2dd;
- 
-  animation: borderBlink .5s step-end infinite;    
+
+  /* animation: borderBlink .5s step-end infinite;     */
 }
 
 .account_pending_transaction > * {
-  padding-right: 12px;
+  padding: 8px 18px 8px 10px;
 }
 
 .account_modal_popup ul {
@@ -308,20 +333,32 @@
     flex-direction: column;
   }
 }
+.form_create_community {
 
-.form {
-  flex-direction: column;
-  display: flex;
   border: 1px solid #242424;
   background-color: #2a2a2a;
   box-shadow: 1px 1px 2px #222222;
-  border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
+
   width: 500px;
   padding: 16px;
   margin-left: 16px;
   margin-right: 16px;
 }
+
+.form_create_post {
+
+  margin: 16px;
+
+}
+
+.form {
+  flex-direction: column;
+  display: flex;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+  
+}
+
 
 .form_field {
   display: flex;
@@ -450,9 +487,4 @@
 
 }
 
-.post_card {
-  background-color: #4c4c4c;
-  padding: 10px;
-  margin: 5px;
-  border-radius: 4px;
-}
+

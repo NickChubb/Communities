@@ -40,8 +40,8 @@ const CommunityHomePage = ({ userId, communityId }) => {
     
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-                <textarea {...register("newPost")} placeholder="What's on your mind?" />
+            <form onSubmit={handleSubmit(onSubmit)} className={`${styles.form} ${styles.form_create_post}`}>
+                <textarea {...register("newPost")} placeholder="What's on your mind?" required />
                 <input type="submit" />
             </form>
             <div>

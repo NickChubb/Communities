@@ -35,7 +35,7 @@ export default async function handler (req, res) {
                 post: post
             });
 
-        res.send(200);
+        return res.send(200);
         
     } else if (req.method === 'PUT') {
 
