@@ -39,6 +39,11 @@ By the time I stopped working on this project, I had implemented several feature
 <img width="1800" alt="Screenshot 2023-10-12 at 3 44 48 PM" src="https://github.com/NickChubb/Communities/assets/4172020/d283b6f0-caea-4ddc-8cc3-d2cfae6a0c0d">
 
 
+#### Explore Communities
+
+<img width="1800" alt="Screenshot 2023-10-14 at 7 28 17 PM" src="https://github.com/NickChubb/Communities/assets/4172020/d8eb5ce1-c7b6-4945-be86-9641b3cd7639">
+
+
 ## Live Demo
 
 The link for the live demo can be found here: [Communities Testnet Demo](https://communities-mocha.vercel.app)
