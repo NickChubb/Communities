@@ -226,9 +226,15 @@
   padding: 10px;
 }
 
+.account_dropdown_address {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+}
+
 
 .account_dropdown_icon {
-  padding: 9px 11px 10px 10px;
+  padding: 4px;
   background-color: #292929;
 }
 
@@ -415,66 +421,71 @@
 }
 
 .profile_grid_container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-
+  display: flex;
+  align-items: center;
+  gap: 48px;
   border: 1px solid #242424;
   background-color: #2a2a2a;
   box-shadow: 1px 1px 2px #222222;
   border-radius: 10px;
-
-}
-
-.profile_grid_container > div {
-
-  text-align: center;
-  padding: 20px 20px;
-  font-size: 20px;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  padding: 24px;
 }
 
 .profile_image_section {
-
   overflow: hidden;
-  text-overflow: ellipsis;
+}
 
+.profile_image_container {
+  background-color: #242424;
+  border: 1px solid #202020;
+  border-radius: 50%;
+  width: fit-content;
 }
 
 .profile_image {
-  border-radius: 50%;
-  
+  width: 224px;
+  height: 224px;
 }
 
 .profile_info_section {
-  grid-column: 2 / 4;
+}
+
+.profile_info_title {
+  font-size: 24px;
 }
 
 .profile_cards_wrapper {
-
-  grid-column: span 3;
-
 }
 
 .profile_cards_grid {
-  
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-
 }
 
 .profile_cards_item {
-
-  margin: 15px;
-  padding: 15px;
-
-  background-color: #9A9A92;
-
 }
 
 .post_card {
-  background-color: #4c4c4c;
-  padding: 10px;
+  border: 1px solid #202020;
+  background: #242424;
+  box-shadow: 1px 1px 2px #222222;
   margin: 5px;
   border-radius: 4px;
+  display: flex;
+  overflow: hidden;
+}
+
+.post_card_header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #292929;
+  border-right: 1px solid #202020;
+  align-items: center;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.post_card_content {
+  padding-left: 32px;
+  display: flex;
+  align-items: center;
 }

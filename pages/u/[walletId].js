@@ -1,26 +1,25 @@
-import Image from 'next/image';
+import { useRouter } from 'next/router';
 import Layout from '@Components/Layout';
-import useEth from '@Hooks/useEth';
 import styles from '@Styles/Home.module.css';
+import UserIcon from '@Components/shared/UserIcon';
 
 const AccountPage = () => {
-
-    const { wallet } = useEth();
-
+    const { query } = useRouter()
     return (
         <Layout>
-            <h1 className={styles.content_title}>
-                My Profile
-            </h1>
-
             <div className={styles.profile_grid_container}>
-
                 <div className={styles.profile_image_section}>
-                    <Image className={styles.profile_image} src={`/placeholder.png`} alt="Community     Placeholder" width={'225'} height={'225'} layout="intrinsic" objectFit='cover' />
-                    {wallet}
+                    {query.walletId && (
+                        <div className={styles.profile_image_container}>
+                            <UserIcon address={query.walletId} className={styles.profile_image}/>
+                        </div>
+                    )}
                 </div>
-            </div>
-            <div className={styles.profile_info_section}>
+                <div className={styles.profile_info_section}>
+                    <div className={styles.profile_info_title}>
+                        {query.walletId}
+                    </div>
+                </div>
             </div>
         </Layout>
     )

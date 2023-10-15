@@ -1,14 +1,16 @@
 import React, { useContext, useState } from 'react';
 import Loader from "react-loader-spinner";
 import Link from 'next/link';
-import { GiHamburgerMenu, GiExitDoor } from 'react-icons/gi'
-import { BsFillPersonFill } from 'react-icons/bs'
+import { BsFillPersonFill, BsGithub } from 'react-icons/bs'
 import { RiLogoutBoxRFill } from 'react-icons/ri'
+import { FaEthereum } from 'react-icons/fa'
 
 import useEth from '@Hooks/useEth';
 import styles from '@Styles/Home.module.css'
 import { useEthers } from "@usedapp/core";
 import { TransactionPendingContext } from '@Helpers/context';
+import { shortenAddress } from '@Helpers/social';
+import UserIcon from './shared/UserIcon';
 
 const AccountModal = () => {
     
@@ -27,21 +29,22 @@ const AccountModal = () => {
                 
                 {
                     account?
-                        <span>
-                            { account?.substring(0,6) + '...' + account?.substring(account?.length - 4) }
-                        </span>
+                        <div className={styles.account_dropdown_address}>
+                            { shortenAddress(account) }
+                        </div>
                         :
-                        <span>
+                        <div className={styles.account_dropdown_address}>
                             Connect Wallet
-                        </span>
+                        </div>
                 }
 
                 <div className={styles.account_dropdown_icon}>
-                    <GiHamburgerMenu />
+                    {/* <GiHamburgerMenu /> */}
+                    <UserIcon address={account || 'dfgadfd'} height={32} width={32} />
                 </div>
             </div>
             {
-                showDropdown?
+                showDropdown && account?
 
                     <div className={styles.account_modal_popup}>
                         <ul>
@@ -52,16 +55,22 @@ const AccountModal = () => {
                                     </a>
                                 </Link>
                             </li>
+                            <li>
+                                <a 
+                                    href={`https://sepolia.etherscan.io/address/${account}`}
+                                    target='_blank'
+                                    rel="noreferrer"
+                                >
+                                    <FaEthereum /> Etherscan
+                                </a>
+                            </li>
                             {/* <li>
-                                <Link href={`/u/${account}`}>
-                                    <a>
-                                        Recent transactions
-                                    </a>
-                                </Link>
-                            </li> */}
-                            {/* <li>
-                                <a href={`https://etherscan.io/address/${account}`}>
-                                    View on etherscan
+                                <a 
+                                    href={`https://github.com/NickChubb/Communities`}
+                                    target='_blank'
+                                    rel="noreferrer"
+                                >
+                                    <BsGithub /> Github
                                 </a>
                             </li> */}
                             <li onClick={deactivate}>

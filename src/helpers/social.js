@@ -43,3 +43,5 @@ export const createPost = async ( userId, communityId, post ) => {
 const socialRequest = () => {
 
 }
+
+export const shortenAddress = (addr) => { return addr?.substring(0,6) + '...' + addr?.substring(addr?.length - 4) }
