@@ -40,7 +40,7 @@ const CommunityCard = ({community, key}) => {
                                 width={150} //3 secs
                             />
                             :
-                            <Image src={`${imageLink}`} alt="Community     Placeholder" width={'300'} height={'150'} layout="intrinsic" objectFit='cover' />
+                            <Image src={`${imageLink}`} alt="Community Placeholder" width={'300'} height={'150'} layout="intrinsic" objectFit='cover' />
                     }
                 </div>
                 <div className={styles.card_body} >

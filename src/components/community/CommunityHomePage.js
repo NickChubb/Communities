@@ -5,6 +5,7 @@ import styles from '@Styles/Home.module.css';
 import Loader from 'react-loader-spinner';
 import PostCard from '@Components/feed/PostCard';
 import PostFeed from '@Components/feed/PostFeed';
+import CommunityImage from '@Components/shared/CommunityImage';
 
 const CommunityHomePage = ({ userId, communityId }) => {
 
@@ -39,12 +40,13 @@ const CommunityHomePage = ({ userId, communityId }) => {
     }
     
     return (
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+        <div className={styles.community_home_page}>
+            <CommunityImage communityId={communityId} />
+            <form onSubmit={handleSubmit(onSubmit)} className={`${styles.form} ${styles.add_post_form}`}>
                 <textarea {...register("newPost")} placeholder="What's on your mind?" />
                 <input type="submit" />
             </form>
-            <div>
+            <div styles={styles.post_feed}>
                 {
                     loading?
                         <Loader
