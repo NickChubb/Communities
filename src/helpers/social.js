@@ -1,47 +1,49 @@
-const BASE_URL = `/api/social`;
+const BASE_URL = `/api/social`
 
 /**
  * Get posts from the database
- * @param {*} userId 
- * @param {*} params 
- * @returns 
+ * @param {*} userId
+ * @param {*} params
+ * @returns
  */
-export const getPosts = async ( userId, params ) => {
+export const getPosts = async (userId, params) => {
+  const { count = 15, communityId } = params || {}
+  let url = `${BASE_URL}`
 
-    const { count = 15, communityId } = params || {};
-    let url = `${BASE_URL}`
+  if (communityId) {
+    url = url += `/community`
+  }
 
-    if (communityId) {
-        url = url += `/community`;
-    }
-
-    const res = await fetch(`${url}/post?` + new URLSearchParams({
+  const res = await fetch(
+    `${url}/post?` +
+      new URLSearchParams({
         count: count,
-        communityId: communityId
-    }), {
-        method: 'GET',
-    })
+        communityId: communityId,
+      }),
+    {
+      method: "GET",
+    }
+  )
 
-    return await res.json();
+  return await res.json()
 }
 
 // Create new post
-export const createPost = async ( userId, communityId, post ) => {
+export const createPost = async (userId, communityId, post) => {
+  let res = await fetch(`${BASE_URL}/post`, {
+    method: "POST",
+    body: JSON.stringify({
+      post: post,
+      userId: userId,
+      communityId: communityId,
+    }),
+  })
 
-    let res = await fetch(`${BASE_URL}/post`, {
-        method: 'POST',
-        body: JSON.stringify({
-            post: post,
-            userId: userId,
-            communityId: communityId
-        })
-    });
-
-    return res;
+  return res
 }
 
-const socialRequest = () => {
+const socialRequest = () => {}
 
+export const shortenAddress = addr => {
+  return addr?.substring(0, 6) + "..." + addr?.substring(addr?.length - 4)
 }
-
-export const shortenAddress = (addr) => { return addr?.substring(0,6) + '...' + addr?.substring(addr?.length - 4) }

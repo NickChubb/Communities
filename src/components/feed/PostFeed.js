@@ -1,5 +1,5 @@
 import React from "react"
-import styles from '@Styles/Home.module.css'
+import styles from "@Styles/Home.module.css"
 import PostCard from "./PostCard"
 
 const PostFeed = ({ feed }) => {
