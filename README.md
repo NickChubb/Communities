@@ -16,7 +16,7 @@ To see the Contracts created for this project, see here: [Contracts](https://git
 
 ## Final Progress
 
-By the time I stopped working on this project, I had implemented several features and have a bare-bones example live on the Ropsten Test-Network (currently not working, see below...)
+By the time I stopped working on this project, I had implemented several features and have a bare-bones example live on the Sepolia Test Network
 
 ### Features Implemented:
 - Creating Community Access Tokens
@@ -25,27 +25,32 @@ By the time I stopped working on this project, I had implemented several feature
 - See all current users Communities
 - Browse all created Communities
 - Upload images for communities to the IPFS
+- Upload posts to MongoDB and display on the community page
 
   
 ### Photos
 
-#### Homepage before wallet is connected
+#### Explore Communities
 
-<img width="1800" alt="Screenshot 2023-10-12 at 3 43 35 PM" src="https://github.com/NickChubb/Communities/assets/4172020/a4a9b272-045f-4474-a975-60a3dde9fc7f">
-
+<img width="1800" alt="Screenshot 2023-10-15 at 11 46 55 PM" src="https://github.com/NickChubb/Communities/assets/4172020/f8f09c25-d1ef-4478-a04d-575694b8fcdc">
 
 #### Create a new Community
 
-<img width="1800" alt="Screenshot 2023-10-12 at 3 44 48 PM" src="https://github.com/NickChubb/Communities/assets/4172020/d283b6f0-caea-4ddc-8cc3-d2cfae6a0c0d">
+<img width="1800" alt="Screenshot 2023-10-15 at 11 47 45 PM" src="https://github.com/NickChubb/Communities/assets/4172020/0434fae8-f667-4c7b-945f-3015a5c417aa">
 
+#### Community Page
 
-#### Explore Communities
+<img width="1800" alt="Screenshot 2023-10-15 at 11 47 24 PM" src="https://github.com/NickChubb/Communities/assets/4172020/6c01b6bc-2665-4937-a526-d32b3c32b78c">
 
-<img width="1800" alt="Screenshot 2023-10-14 at 7 28 17 PM" src="https://github.com/NickChubb/Communities/assets/4172020/d8eb5ce1-c7b6-4945-be86-9641b3cd7639">
+#### User's Page
+
+<img width="1800" alt="Screenshot 2023-10-15 at 11 47 39 PM" src="https://github.com/NickChubb/Communities/assets/4172020/4dfbdb74-779b-4a59-b3f3-5d530b6a8fc3">
 
 
 ## Live Demo
 
 The link for the live demo can be found here: [Communities Testnet Demo](https://communities-mocha.vercel.app)
 
-Since the depreciation of the Ropsten test network, the live demo is no longer properly working. I am working on uploading the contracts to a different test network currently (Oct 2023).
+To access the app, you need a Ethereum browser wallet extension, such as [Metamask](https://metamask.io/), and you will need to have the Sepolia testnet enabled. Since the app is live on an Ethereum testnet, you must use Ether to pay the gas costs of creating and joining communities. Free Sepolia Ether can be obtained from the faucet [here](https://sepoliafaucet.com/). 
+
+[Here is a guide for setting up your Metamask to use Sepolia.](https://medium.com/@razor07/how-to-get-sepolia-eth-from-a-faucet-7420e5ceacb3#:~:text=To%20add%20the%20Sepolia%20testnet%20to%20MetaMask%2C%20click%20the%20network,%E2%80%9CAdd%20a%20network%20manually%E2%80%9D.)
