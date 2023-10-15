@@ -5,12 +5,12 @@ import { useEthers } from "@usedapp/core"
 
 const Login = () => {
   const { activateBrowserWallet, activate } = useEthers()
-  const walletconnect = new WalletConnectConnector({
-    rpc: {
-      3: "https://eth-ropsten.alchemyapi.io/v2/WENhXA-GO8W5vDPMKECQwYadNpjuE4Of",
-    },
-    qrcode: true,
-  })
+  // const walletconnect = new WalletConnectConnector({
+  //   rpc: {
+  //     3: "https://eth-ropsten.alchemyapi.io/v2/WENhXA-GO8W5vDPMKECQwYadNpjuE4Of",
+  //   },
+  //   qrcode: true,
+  // })
 
   return (
     <div className={styles.content}>
@@ -20,12 +20,12 @@ const Login = () => {
         <button className={styles.button} onClick={activateBrowserWallet}>
           Metamask
         </button>
-        <button
+        {/* <button
           className={styles.button}
           onClick={() => activate(walletconnect)}
         >
           WalletConnect
-        </button>
+        </button> */}
       </h1>
     </div>
   )
