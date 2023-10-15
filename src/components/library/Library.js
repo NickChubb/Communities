@@ -8,15 +8,13 @@ import CommunityCard from '@Components/explore/CommunityCard';
 import { getAllUserCommunities } from '@Helpers/communityHub';
 
 const Library = () => {
-
   const { account, library } = useEthers();
-
-  const [NFTs, setNFTs] = useState([]);
+  const [communities, setCommunities] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(async() => {
     if (!account || !library) return;
-    setNFTs(await getAllUserCommunities(library, account));
+    setCommunities(await getAllUserCommunities(library, account));
     setLoading(false);
 
   }, [library])
@@ -41,11 +39,9 @@ const Library = () => {
                 width={150} //3 secs
             />
             :
-            NFTs && NFTs.length > 0 ?
-              NFTs.map((nft, key) => {
-                console.log(nft);
-                // return <LibraryCard key={key} community={nft} />
-                return <CommunityCard key={key} community={nft} />
+            communities && communities.length > 0 ?
+              communities.map((community, key) => {
+                return <CommunityCard key={key} community={community} />
               })
               :
               <div>
