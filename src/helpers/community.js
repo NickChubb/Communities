@@ -21,7 +21,6 @@ export const getCommunityContract = async (provider, address) => {
  */
 export const getCommunityObject = async (provider, address) => {
   let contract = await getCommunityContract(provider, address)
-  console.log(contract)
   const [name, size, totalMemberCount, metadata] = await Promise.all([
     contract.communityName(),
     contract.communitySize(),

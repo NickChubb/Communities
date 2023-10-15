@@ -8,9 +8,15 @@ import Link from "next/link"
 import styles from "@Styles/Home.module.css"
 import AccountButton from "./AccountModal"
 import Login from "./login/Login"
+import WrongNetwork from "./login/WrongNetwork"
 
 const Layout = props => {
-  const { account } = useEthers()
+  const { account, library } = useEthers()
+
+  const isSepolia = library?.network?.chainId === 11155111
+  console.log(library?.network?.chainId)
+  console.log(isSepolia)
+
 
   return (
     <div className={styles.container}>
@@ -31,18 +37,10 @@ const Layout = props => {
         </div>
 
         {
-          // loading?
-          //     <Loader
-          //         type="BallTriangle"
-          //         style={{marginTop: '100px'}}
-          //         // type="Puff"
-          //         color="#00BFFF"
-          //         height={150}
-          //         width={150} //3 secs
-          //     />
-          //     :
           !account ? (
             <Login />
+          ) : !isSepolia ? (
+            <WrongNetwork />
           ) : (
             <div className={styles.content}>{props.children}</div>
           )
