@@ -7,6 +7,7 @@ import { getAllUserCommunities } from "@Helpers/communityHub"
 import { useEthers } from "@usedapp/core"
 import Loader from "react-loader-spinner"
 import CommunityCard from "@Components/explore/CommunityCard"
+import { FaEthereum } from "react-icons/fa"
 
 const AccountPage = () => {
   const { query } = useRouter()
@@ -35,6 +36,14 @@ const AccountPage = () => {
         </div>
         <div className={styles.profile_info_section}>
           <div className={styles.profile_info_title}>{walletId}</div>
+          <a
+            className={styles.profile_button}
+            href={`https://sepolia.etherscan.io/address/${walletId}`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaEthereum /> Etherscan
+          </a>
         </div>
       </div>
 
@@ -52,7 +61,13 @@ const AccountPage = () => {
             />
           ) : communities && communities.length > 0 ? (
             communities.map((community, key) => {
-              return <CommunityCard className={styles.card} key={key} community={community} />
+              return (
+                <CommunityCard
+                  className={styles.card}
+                  key={key}
+                  community={community}
+                />
+              )
             })
           ) : (
             <div>

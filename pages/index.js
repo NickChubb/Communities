@@ -9,21 +9,17 @@ import PostFeed from "@Components/feed/PostFeed";
 
 export default function Home() {
 
-    const { wallet, setWallet,
-            provider, setProvider,
-            signer, setSigner,
-            loading } = useEth();
-
-    const { account } = useEthers();
-
-    const [ feed, setFeed ] = useState();
+    const { wallet, loading } = useEth();
+    const [ feed, setFeed ] = useState({});
     const [ isLoading, setLoading ] = useState(true);
 
     useEffect(() => {
       
         const getFeed = async () => {
-            setFeed(await getPosts(wallet));
-            setLoading(false);
+            getPosts(wallet).then((res) => {
+              setFeed(res);
+              setLoading(false);
+            })
         }
 
         getFeed();

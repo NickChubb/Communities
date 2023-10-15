@@ -71,6 +71,10 @@
   gap: 8px;
 }
 
+.home_post_feed {
+  width: 924px;
+}
+
 .nav_bar {
   list-style-type: none;
   margin: 0;
@@ -232,7 +236,7 @@
 
 
 .account_dropdown_icon {
-  padding: 4px;
+  padding: 6px 4px 2px;
   background-color: #292929;
 }
 
@@ -445,7 +449,17 @@
   height: 224px;
 }
 
+.profile_button {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  gap: 8px;
+}
+
 .profile_info_section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .profile_info_title {
@@ -455,6 +469,7 @@
 .profile_info_communities {
   width: 100%;
   text-align: center;
+  margin-top: 48px;
 }
 
 .post_card {
